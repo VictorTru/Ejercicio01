@@ -30,7 +30,8 @@ githubActionSearch.onclick=()=>{
         });
         return;
     }
-    obtenerDatosGithub(username)
+    obtenerDatosGithub(username);
+    
 }
 
 
@@ -68,20 +69,31 @@ const obtenerDatosGithub = async (username="VictorTru") => {
 
 
 
-//es una funcion que alamacena los datos a cambiar 
-
 const setDataUser =(data)=>{
     imageProfile.src= data.avatar_url;
     githubName.innerHTML =data.name;
     githubUsername.innerHTML=`@${data.login}`;
     githubFollowers.innerHTML=data.followers;
     githubFollowing.innerHTML=data.following;
-    githubRepos.innerHTML = data.repos_url.length;
+    githubRepos.innerHTML = data.public_repos;
     githubBio.innerHTML= data.bio;
     githubBlog.innerHTML=data.blog;
-    githubCompany.innerHTML = data.company;
+    // githubCompany.innerHTML = data.company;
+    // githubCompany.innerHTML = `${data.repos_url[i].description}`;
+    githubJoined.innerHTML = new Date(data.created_at).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'});
+
+    
+
 }
 
+
+
+
+
 obtenerDatosGithub();
+
+
+
+
 
 
